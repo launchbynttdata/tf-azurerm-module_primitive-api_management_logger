@@ -1,0 +1,1 @@
+# tf-azurerm-module_primitive-api_management_logger
