@@ -53,20 +53,22 @@ module "apim" {
 
   virtual_network_type = var.virtual_network_type
 
-  identity_ids = []
-
   tags = merge(var.tags, { resource_name = module.resource_names["api_management"].standard })
 
   depends_on = [module.resource_group]
 }
 
 module "eventhub_namespace" {
-  source  = "terraform.registry.launch.nttdata.com/module_primitive/eventhub_namespace/azurerm"
-  version = "~> 1.0"
+  # source  = "terraform.registry.launch.nttdata.com/module_primitive/eventhub_namespace/azurerm"
+  # version = "~> 1.0"
+
+  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-eventhub_namespace.git?ref=feature/add-outputs"
 
   namespace_name      = module.resource_names["eventhub_namespace"].minimal_random_suffix
   resource_group_name = module.resource_group.name
   location            = var.region
+
+  public_network_access_enabled = true
 
   tags = merge(var.tags, { resource_name = module.resource_names["eventhub_namespace"].standard })
 
@@ -77,29 +79,29 @@ module "eventhub" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/eventhub/azurerm"
   version = "~> 1.0"
 
-  eventhub_name       = "apim-logger"
+  eventhub_name       = var.name
   resource_group_name = module.resource_group.name
   namespace_name      = module.eventhub_namespace.namespace_name
 
   depends_on = [module.eventhub_namespace]
 }
 
-# module "apim_logger" {
-#   source = "../.."
+module "apim_logger" {
+  source = "../.."
 
-#   api_management_name = module.apim.api_management_name
-#   resource_group_name = module.resource_group.name
+  api_management_name = module.apim.api_management_name
+  resource_group_name = module.resource_group.name
 
-#   name        = var.name
-#   description = var.description
-#   buffered    = var.buffered
+  name        = var.name
+  description = var.description
+  buffered    = var.buffered
 
-#   resource_id = module.eventhub.id
+  resource_id = module.eventhub.eventhub_id
 
-#   eventhub = {
-#     name = module.eventhub.name
-#     connection_string = module.eventhub_namespace.default_primary_connection_string
-#   }
+  eventhub = {
+    name              = module.eventhub.eventhub_name
+    connection_string = module.eventhub_namespace.default_primary_connection_string
+  }
 
-#   depends_on = [module.apim, module.eventhub]
-# }
+  depends_on = [module.apim, module.eventhub]
+}

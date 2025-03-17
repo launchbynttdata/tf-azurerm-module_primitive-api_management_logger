@@ -146,5 +146,4 @@ No modules.
 |------|-------------|
 | <a name="output_logger_id"></a> [logger\_id](#output\_logger\_id) | n/a |
 | <a name="output_logger_name"></a> [logger\_name](#output\_logger\_name) | n/a |
-| <a name="output_logger_resource_id"></a> [logger\_resource\_id](#output\_logger\_resource\_id) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

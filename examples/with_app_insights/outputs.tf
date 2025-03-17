@@ -36,7 +36,3 @@ output "logger_id" {
 output "logger_name" {
   value = module.apim_logger.logger_name
 }
-
-output "logger_resource_id" {
-  value = module.apim_logger.logger_resource_id
-}

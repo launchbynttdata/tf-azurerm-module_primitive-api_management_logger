@@ -30,7 +30,7 @@ func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
 		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
 		serviceName := terraform.Output(t, ctx.TerratestTerraformOptions(), "api_management_name")
 		loggerName := terraform.Output(t, ctx.TerratestTerraformOptions(), "logger_name")
-		loggerResourceId := terraform.Output(t, ctx.TerratestTerraformOptions(), "logger_resource_id")
+		loggerId := terraform.Output(t, ctx.TerratestTerraformOptions(), "logger_id")
 
 		options := arm.ClientOptions{
 			ClientOptions: azcore.ClientOptions{
@@ -48,6 +48,6 @@ func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
 			t.Fatalf("Error getting API Management logger: %v", err)
 		}
 
-		assert.Equal(t, loggerResourceId, *logger.Properties.ResourceID)
+		assert.Equal(t, loggerId, *logger.ID)
 	})
 }

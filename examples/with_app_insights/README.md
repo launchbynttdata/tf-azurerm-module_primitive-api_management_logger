@@ -32,7 +32,7 @@ No providers.
 | <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | terraform.registry.launch.nttdata.com/module_library/resource_name/launch | ~> 2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform.registry.launch.nttdata.com/module_primitive/resource_group/azurerm | ~> 1.0 |
 | <a name="module_apim"></a> [apim](#module\_apim) | terraform.registry.launch.nttdata.com/module_primitive/api_management/azurerm | ~> 1.0 |
-| <a name="module_app_insights"></a> [app\_insights](#module\_app\_insights) | terraform.registry.launch.nttdata.com/module_primitive/application_insights/azurerm | ~> 1.0 |
+| <a name="module_app_insights"></a> [app\_insights](#module\_app\_insights) | git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-application_insights.git | fix/tf-version-constraint |
 | <a name="module_apim_logger"></a> [apim\_logger](#module\_apim\_logger) | ../.. | n/a |
 
 ## Resources
@@ -70,5 +70,4 @@ No resources.
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
 | <a name="output_logger_id"></a> [logger\_id](#output\_logger\_id) | n/a |
 | <a name="output_logger_name"></a> [logger\_name](#output\_logger\_name) | n/a |
-| <a name="output_logger_resource_id"></a> [logger\_resource\_id](#output\_logger\_resource\_id) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
