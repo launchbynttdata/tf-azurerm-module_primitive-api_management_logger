@@ -32,7 +32,7 @@ No providers.
 | <a name="module_resource_names"></a> [resource\_names](#module\_resource\_names) | terraform.registry.launch.nttdata.com/module_library/resource_name/launch | ~> 2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform.registry.launch.nttdata.com/module_primitive/resource_group/azurerm | ~> 1.0 |
 | <a name="module_apim"></a> [apim](#module\_apim) | terraform.registry.launch.nttdata.com/module_primitive/api_management/azurerm | ~> 1.0 |
-| <a name="module_app_insights"></a> [app\_insights](#module\_app\_insights) | git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-application_insights.git | fix/tf-version-constraint |
+| <a name="module_app_insights"></a> [app\_insights](#module\_app\_insights) | terraform.registry.launch.nttdata.com/module_primitive/application_insights/azurerm | ~> 1.0 |
 | <a name="module_apim_logger"></a> [apim\_logger](#module\_apim\_logger) | ../.. | n/a |
 
 ## Resources

@@ -59,10 +59,8 @@ module "apim" {
 }
 
 module "app_insights" {
-  # source  = "terraform.registry.launch.nttdata.com/module_primitive/application_insights/azurerm"
-  # version = "~> 1.0"
-
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-application_insights.git?ref=fix/tf-version-constraint"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/application_insights/azurerm"
+  version = "~> 1.0"
 
   name                = module.resource_names["app_insights"].minimal_random_suffix
   resource_group_name = module.resource_group.name

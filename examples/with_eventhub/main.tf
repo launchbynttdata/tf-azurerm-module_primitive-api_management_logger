@@ -59,10 +59,8 @@ module "apim" {
 }
 
 module "eventhub_namespace" {
-  # source  = "terraform.registry.launch.nttdata.com/module_primitive/eventhub_namespace/azurerm"
-  # version = "~> 1.0"
-
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-eventhub_namespace.git?ref=feature/add-outputs"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/eventhub_namespace/azurerm"
+  version = "~> 1.0"
 
   namespace_name      = module.resource_names["eventhub_namespace"].minimal_random_suffix
   resource_group_name = module.resource_group.name
