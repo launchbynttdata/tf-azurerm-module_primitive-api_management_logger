@@ -81,7 +81,7 @@ module "app_insights" {
 
   // app insights module is not idempotent unless the workspace_id is set
   // otherwise Azure will create a new workspace which terraform is not aware of
-  workspace_id = module.log_analytics_workspace.workspace_id
+  workspace_id = module.log_analytics_workspace.id
 
   tags = merge(var.tags, { resource_name = module.resource_names["app_insights"].standard })
 
