@@ -58,6 +58,19 @@ module "apim" {
   depends_on = [module.resource_group]
 }
 
+module "log_analytics_workspace" {
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/log_analytics_workspace/azurerm"
+  version = "~> 1.0"
+
+  name                = module.resource_names["log_analytics_workspace"].minimal_random_suffix
+  resource_group_name = module.resource_group.name
+  location            = var.region
+
+  tags = merge(var.tags, { resource_name = module.resource_names["log_analytics_workspace"].standard })
+
+  depends_on = [module.resource_group]
+}
+
 module "app_insights" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/application_insights/azurerm"
   version = "~> 1.0"
@@ -65,6 +78,10 @@ module "app_insights" {
   name                = module.resource_names["app_insights"].minimal_random_suffix
   resource_group_name = module.resource_group.name
   location            = var.region
+
+  // app insights module is not idempotent unless the workspace_id is set
+  // otherwise Azure will create a new workspace which terraform is not aware of
+  workspace_id = module.log_analytics_workspace.workspace_id
 
   tags = merge(var.tags, { resource_name = module.resource_names["app_insights"].standard })
 

@@ -72,6 +72,10 @@ variable "resource_names_map" {
       name       = "appins"
       max_length = 50
     }
+    log_analytics_workspace = {
+      name       = "law"
+      max_length = 50
+    }
   }
 }
 
