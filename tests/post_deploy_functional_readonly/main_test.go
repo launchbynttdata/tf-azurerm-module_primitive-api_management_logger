@@ -26,12 +26,12 @@ const (
 	infraTFVarFileNameDefault        = "test.tfvars"
 )
 
-func TestApiManagementModule(t *testing.T) {
+func TestComposableApiManagementModule(t *testing.T) {
 	ctx := types.CreateTestContextBuilder().
 		SetTestConfig(&testimpl.ThisTFModuleConfig{}).
 		SetTestConfigFolderName(testConfigsExamplesFolderDefault).
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestApiManagementModule)
+	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestComposableApiManagementModule)
 }

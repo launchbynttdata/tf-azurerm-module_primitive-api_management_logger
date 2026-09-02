@@ -15,7 +15,7 @@ import (
 	"gotest.tools/v3/assert"
 )
 
-func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
+func TestComposableApiManagementModule(t *testing.T, ctx types.TestContext) {
 	subscriptionId := os.Getenv("ARM_SUBSCRIPTION_ID")
 	if len(subscriptionId) == 0 {
 		t.Fatal("ARM_SUBSCRIPTION_ID environment variable is not set")
@@ -27,10 +27,10 @@ func TestApiManagementModule(t *testing.T, ctx types.TestContext) {
 	}
 
 	t.Run("doesApiManagementLoggerExist", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		serviceName := terraform.Output(t, ctx.TerratestTerraformOptions(), "api_management_name")
-		loggerName := terraform.Output(t, ctx.TerratestTerraformOptions(), "logger_name")
-		loggerId := terraform.Output(t, ctx.TerratestTerraformOptions(), "logger_id")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		serviceName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "api_management_name")
+		loggerName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "logger_name")
+		loggerId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "logger_id")
 
 		options := arm.ClientOptions{
 			ClientOptions: azcore.ClientOptions{
