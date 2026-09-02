@@ -18,15 +18,6 @@ variable "api_management_name" {
   }
 }
 
-variable "resource_id" {
-  type        = string
-  description = "Can be the ARM Resource ID of Application Insights or Event Hub to push data to"
-  default     = null
-  validation {
-    condition     = var.resource_id == null || can(regex("^[a-zA-Z0-9-:\\/_.]{1,256}$", var.resource_id))
-    error_message = "The resource_id can be a URI or URL."
-  }
-}
 
 variable "name" {
   type        = string
