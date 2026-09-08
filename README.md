@@ -111,6 +111,12 @@ If `make check` target is successful, developer is good to commit the code to pr
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~>3.117 |
 
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~>3.117 |
+
 ## Modules
 
 No modules.
@@ -132,7 +138,6 @@ No modules.
 | <a name="input_eventhub"></a> [eventhub](#input\_eventhub) | options for logging to event hub | <pre>object({<br>    name                             = string<br>    connection_string                = optional(string)<br>    user_assigned_identity_client_id = optional(string)<br>    endpoint_uri                     = optional(string)<br>  })</pre> | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | name of the logger | `string` | `null` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the APIM exists | `string` | `null` | no |
-| <a name="input_resource_id"></a> [resource\_id](#input\_resource\_id) | Can be the ARM Resource ID of Application Insights or Event Hub to push data to | `string` | `null` | no |
 
 ## Outputs
 
