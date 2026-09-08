@@ -103,7 +103,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -115,7 +115,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.117.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~>3.117 |
 
 ## Modules
 
@@ -131,14 +131,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the APIM exists | `string` | `null` | no |
 | <a name="input_api_management_name"></a> [api\_management\_name](#input\_api\_management\_name) | name of the APIM in which this logger will de deployed | `string` | `null` | no |
-| <a name="input_resource_id"></a> [resource\_id](#input\_resource\_id) | Can be the ARM Resource ID of Application Insights or Event Hub to push data to | `string` | `null` | no |
-| <a name="input_name"></a> [name](#input\_name) | name of the logger | `string` | `null` | no |
+| <a name="input_application_insights"></a> [application\_insights](#input\_application\_insights) | options for logging to application insights | <pre>object({<br>    # support for connection_string not available until provider version 4.1<br>    instrumentation_key = string<br>  })</pre> | `null` | no |
 | <a name="input_buffered"></a> [buffered](#input\_buffered) | whether records should be buffered in the Logger prior to publishing | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | description of the logger | `string` | `null` | no |
-| <a name="input_application_insights"></a> [application\_insights](#input\_application\_insights) | options for logging to application insights | <pre>object({<br>    # support for connection_string not available until provider version 4.1<br>    instrumentation_key = string<br>  })</pre> | `null` | no |
 | <a name="input_eventhub"></a> [eventhub](#input\_eventhub) | options for logging to event hub | <pre>object({<br>    name                             = string<br>    connection_string                = optional(string)<br>    user_assigned_identity_client_id = optional(string)<br>    endpoint_uri                     = optional(string)<br>  })</pre> | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | name of the logger | `string` | `null` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | name of the resource group where the APIM exists | `string` | `null` | no |
 
 ## Outputs
 
@@ -146,4 +145,4 @@ No modules.
 |------|-------------|
 | <a name="output_logger_id"></a> [logger\_id](#output\_logger\_id) | n/a |
 | <a name="output_logger_name"></a> [logger\_name](#output\_logger\_name) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

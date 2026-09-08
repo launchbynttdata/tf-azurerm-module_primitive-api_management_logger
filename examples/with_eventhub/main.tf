@@ -94,8 +94,6 @@ module "apim_logger" {
   description = var.description
   buffered    = var.buffered
 
-  resource_id = module.eventhub.eventhub_id
-
   eventhub = {
     name              = module.eventhub.eventhub_name
     connection_string = module.eventhub_namespace.default_primary_connection_string

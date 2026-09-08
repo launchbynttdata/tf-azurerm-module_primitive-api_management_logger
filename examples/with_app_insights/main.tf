@@ -98,8 +98,6 @@ module "apim_logger" {
   description = var.description
   buffered    = var.buffered
 
-  resource_id = module.app_insights.id
-
   application_insights = {
     instrumentation_key = module.app_insights.instrumentation_key
   }

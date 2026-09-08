@@ -18,7 +18,7 @@ LCAF_ENV_FILE = .lcafenv
 # Source repository for repo manifests
 REPO_MANIFESTS_URL ?= https://github.com/launchbynttdata/launch-common-automation-framework.git
 # Branch of source repository for repo manifests. Other tags not currently supported.
-REPO_BRANCH ?= refs/tags/1.7.1
+REPO_BRANCH ?= refs/tags/1.8.2
 # Path to seed manifest in repository referenced in REPO_MANIFESTS_URL
 REPO_MANIFEST ?= manifests/terraform_modules/seed/manifest.xml
 
@@ -129,4 +129,20 @@ init-clean:
 	git init --initial-branch=main
 ifneq (,$(wildcard ./TEMPLATED_README.md))
 	mv TEMPLATED_README.md README.MD
+endif
+ifeq ($(wildcard $(COMPONENTS_DIR)/Makefile),)
+# golangci-lint via go tool (go.mod tool directive)
+GO ?= go
+GOLANGCI_LINT := $(GO) tool golangci-lint
+# Minimal lint when components/ is not synced
+GO_TEST_DIRECTORIES ?= tests
+GOLANGCI_LINT_CONFIG ?= .golangci.yaml
+FIND ?= find
+GREP ?= grep
+
+.PHONY: lint check
+lint:
+	$(FIND) $(GO_TEST_DIRECTORIES)/ -name '*.go' | $(GREP) -q '\.go' || exit 0; $(GOLANGCI_LINT) run -c $(GOLANGCI_LINT_CONFIG) -v ./$(GO_TEST_DIRECTORIES)/...;
+
+check: lint
 endif
