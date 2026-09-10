@@ -21,8 +21,7 @@ import (
 )
 
 const (
-	// Currently read-only tests are designed only to run on individual examples
-	testConfigsExamplesFolderDefault = "../../examples/complete"
+	testConfigsExamplesFolderDefault = "../../examples"
 	infraTFVarFileNameDefault        = "test.tfvars"
 )
 
@@ -33,5 +32,5 @@ func TestComposableApiManagementModule(t *testing.T) {
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestComposableApiManagementModule)
+	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestComposableReadonlyApiManagementModule)
 }
