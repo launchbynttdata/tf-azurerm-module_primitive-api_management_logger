@@ -1,3 +1,6 @@
+.DS_Store
+Thumbs.db
+
 terraform.*
 .repo/
 components/
@@ -21,6 +24,9 @@ components/
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.tfplan
+tfplan.*
+tfplan
 
 # Crash log files
 crash.log
@@ -55,13 +61,5 @@ terraform.rc
 azure_env.sh
 .releaserc.json
 
-# Pre-commit hook
-
 # VS Code
 .vscode/
-
-# Certs
-*.pem
-*.cer
-*.crt
-*.pfx
